@@ -1,0 +1,549 @@
+/* --- Experience Section Styles --- */
+.experience-feature {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 5rem;
+}
+
+.experience-feature:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.experience-gallery {
+    flex: 1;
+    min-width: 300px;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 120px);
+}
+
+.experience-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.experience-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.experience-gallery img:nth-child(1) {
+    grid-column: 1 / 3;
+    grid-row: 1 / 3;
+}
+
+.experience-gallery img:nth-child(2) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+.experience-gallery img:nth-child(3) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.experience-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.experience-text h3 {
+    font-family: var(--font-heading);
+    color: orange;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-text h4 {
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--dark-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 65px;
+        flex-direction: column;
+        background-color: var(--dark-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #4d5b69;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .promise-content {
+        flex-direction: column;
+    }
+
+    .experience-feature,
+    .experience-feature:nth-child(even) {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .experience-gallery {
+        grid-template-rows: repeat(2, 150px);
+    }
+
+    .experience-text {
+        text-align: center;
+    }
+}
+/* --- Global Styles & Variables (Required for both Navbar and Footer) --- */
+:root {
+    --primary-color: #E67E22;
+    --dark-color: #2C3E50;
+    --light-color: #FDFEFE;
+    --text-color: #34495E;
+    --rustic-bg: #F5EFE6;
+    --font-heading: 'Merriweather', serif;
+    --font-body: 'Montserrat', sans-serif;
+    --nav-height: 70px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--rustic-bg);
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 3rem 1.5rem;
+}
+
+.contact-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-link:hover {
+    color: var(--primary-color);
+}
+
+
+/* --- Navbar Specific Styles --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.4s ease;
+    /* Set a default background color for other pages */
+    background-color: #1d1d1d; 
+    height: var(--nav-height);
+    display: flex;
+    align-items: center;
+}
+
+/* This class is for the transparent-to-solid effect on the homepage.
+   You can keep it for consistency or remove if not needed on other pages. */
+.navbar.scrolled {
+    background-color: var(--dark-color);
+    box-shadow: 0 2px 10px #ffffff1a;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--light-color);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+}
+
+.nav-logo img {
+    height: 45px;
+    width: 45px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-link {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link.active-link {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    background-color: var(--light-color);
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Responsive Styles for Navbar --- */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 65px; /* Adjust based on navbar height */
+        flex-direction: column;
+        background-color: var(--dark-color);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #4d5b69;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+/* --- Footer Styles --- */
+.site-footer {
+    background-color: #1d1d1d;
+    color: #edf3f7;
+    padding-top: 3rem;
+    font-size: 0.9rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+.footer-logo {
+    width: 100px;
+    background: var(--light-color);
+    border-radius: 50%;
+    padding: 5px;
+    margin-bottom: 1rem;
+}
+
+.site-footer h4 {
+    font-family: var(--font-heading);
+    color: orange;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li a {
+    color: #fcfeff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links ul li a:hover {
+    color: var(--primary-color);
+}
+
+.footer-contact p i {
+    margin-right: 10px;
+}
+
+.footer-social a {
+    color: #ecf1f5;
+    font-size: 1.5rem;
+    text-decoration: none;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--primary-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid #34495E;
+}
+/* --- Gallery Section Styles --- */
+.gallery-section {
+  padding: 2rem;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.gallery-section .section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Masonry Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 250px;
+  gap: 10px;
+}
+
+/* Gallery Item */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Overlay on Hover */
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.gallery-overlay h3 {
+  font-size: 1.5rem;
+  color: #ff6a2a;
+}
+
+/* Full Page Effect */
+#gallery {
+  min-height: 100vh; /* Full page height */
+}
+/* Sets the overall container for the hero banner. */
+.hero-wrap.hero-wrap-2 {
+    position: relative; /*cite: 1*/
+    width: 100%; /*cite: 1*/
+    height: 550px; /* Adjust this value for a taller or shorter banner */ /*cite: 1*/
+    display: flex; /*cite: 1*/
+    align-items: flex-end; /* Aligns content to the bottom */ /*cite: 1*/
+    justify-content: center; /*cite: 1*/
+    background-size: cover; /*cite: 1*/
+    background-position: center center; /*cite: 1*/
+    overflow: hidden; /* Ensures no content spills out */ /*cite: 1*/
+}
+
+/* Creates the semi-transparent dark layer over the background image. */
+.hero-wrap .overlay {
+    position: absolute; /*cite: 1*/
+    top: 0; /*cite: 1*/
+    left: 0; /*cite: 1*/
+    right: 0; /*cite: 1*/
+    bottom: 0; /*cite: 1*/
+    background: rgba(0, 0, 0, 0.55); /* Black overlay with 55% opacity */ /*cite: 1*/
+    z-index: 1; /* Sits below the text but above the background image */ /*cite: 1*/
+}
+
+/* Ensures the text content sits on top of the overlay. */
+.hero-wrap .container {
+    position: relative; /*cite: 1*/
+    z-index: 2; /*cite: 1*/
+    padding-bottom: 30px; /* Adds some space from the bottom edge */ /*cite: 1*/
+}
+
+/* Styles the main "Ambience" title. */
+.bread {
+    font-size: 48px; /*cite: 1*/
+    font-weight: 700; /*cite: 1*/
+    color: #fff; /*cite: 1*/
+    margin: 0; /*cite: 1*/
+    letter-spacing: .3px; /*cite: 1*/
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* Adds a subtle shadow for better readability */ /*cite: 1*/
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For tablet screens (up to 992px wide) */
+@media (max-width: 992px) {
+    .hero-wrap.hero-wrap-2 {
+        height: 280px; /* Shorter banner height */ /*cite: 1*/
+    }
+
+    .bread {
+        font-size: 36px; /* Smaller title font size */ /*cite: 1*/
+    }
+}
+
+/* For mobile screens (up to 767px wide) */
+@media (max-width: 767px) {
+    .hero-wrap.hero-wrap-2 {
+        height: 220px; /* Even shorter banner height */ /*cite: 1*/
+        align-items: center; /* Vertically centers the text */ /*cite: 1*/
+        padding: 10px 0; /*cite: 1*/
+    }
+
+    .bread {
+        font-size: 28px; /* Further reduced font size for small screens */ /*cite: 1*/
+    }
+}
+
+
+
+
+/* --- Responsive Styles for Navbar --- */ /* PASTE THE NEW CODE BLOCK HERE */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 65px; /* Adjust based on navbar height */
+        flex-direction: column;
+        background-color: #1d1d1d;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        gap: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        padding: 1rem 0;
+        border-bottom: 1px solid #4d5b69;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
